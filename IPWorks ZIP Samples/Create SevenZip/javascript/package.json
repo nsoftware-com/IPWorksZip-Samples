@@ -8,7 +8,7 @@
   "main": "createsevenzip.js",
   "dependencies": {
     "full-icu": "*",
-    "ipworkszip": "^22.0.8858"
+    "ipworkszip": "^22.0.8712"
   },
   "scripts": {
     "createsevenzip": "node createsevenzip.js"
