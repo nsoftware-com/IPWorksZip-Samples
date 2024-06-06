@@ -1,5 +1,5 @@
 (*
- * IPWorks ZIP 2022 Delphi Edition - Sample Project
+ * IPWorks ZIP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks ZIP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -41,7 +41,7 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure btnExtractAllClick(Sender: TObject);
     procedure btnExtractSelectedClick(Sender: TObject);
-    procedure Zip1Progress(Sender: TObject; Data: String;
+    procedure Zip1Progress(Sender: TObject; Data: String; DataB: TBytes;
       const Filename: String; BytesProcessed: Int64;
       PercentProcessed: Integer);
   private
@@ -104,7 +104,7 @@ begin
        lvwFiles.Items[lvwFiles.Items.Count - 1].SubItems.Add('TRUE');
   end;
   
-  except on E: EipzZip do
+  except on E: EIPWorksZip do
     ShowMessage(E.Message);
   end;
 end;
@@ -128,7 +128,7 @@ begin
     Zip1.ExtractToPath := txtExtractToPath.Text;
     Zip1.ExtractAll;
     ShowMessage('Extract Complete.');
-  except on E: EipzZip do
+  except on E: EIPWorksZip do
     ShowMessage(E.Message);
   end;
 end;
@@ -152,12 +152,12 @@ begin
     end;
 
     ShowMessage('Extract Complete.');
-  except on E: EipzZip do
+  except on E: EIPWorksZip do
     ShowMessage(E.Message);
   end;
 end;
 
-procedure TFormOpenzip.Zip1Progress(Sender: TObject; Data: String;
+procedure TFormOpenzip.Zip1Progress(Sender: TObject; Data: String; DataB: TBytes;
   const Filename: String; BytesProcessed: Int64;
   PercentProcessed: Integer);
 begin

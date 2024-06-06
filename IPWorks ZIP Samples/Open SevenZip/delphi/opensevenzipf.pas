@@ -1,5 +1,5 @@
 (*
- * IPWorks ZIP 2022 Delphi Edition - Sample Project
+ * IPWorks ZIP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks ZIP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -42,7 +42,7 @@ type
     procedure btnExtractAllClick(Sender: TObject);
     procedure btnExtractSelectedClick(Sender: TObject);
     procedure SevenZip1Progress(Sender: TObject; Data: string;
-      const Filename: string; BytesProcessed: Int64; PercentProcessed: Integer);
+      DataB: TBytes; const Filename: string; BytesProcessed: Int64; PercentProcessed: Integer);
   private
     { Private declarations }
   public
@@ -70,10 +70,9 @@ end;
 
 procedure TFormOpenSevenZip.btnScanClick(Sender: TObject);
 var
-i: Integer;
-attrs: AnsiString;
+  i: Integer;
+  attrs: AnsiString;
 begin
-
   try
     SevenZip1.Reset;
     lvwFiles.Clear;
@@ -99,15 +98,15 @@ begin
       lvwFiles.Items[lvwFiles.Items.Count - 1].SubItems.Add(IntToHex(SevenZip1.FileCRC[i], 4));
       lvwFiles.Items[lvwFiles.Items.Count - 1].SubItems.Add(attrs);
     end;
-  except on e: EipzSevenZip do
+  except on E: EIPWorksZip do
     ShowMessage(E.Message);
   end;
 end;
 
 procedure TFormOpenSevenZip.btnSaveClick(Sender: TObject);
 var
-DirSelected: UnicodeString;
-options: TSelectDirOpts;
+  DirSelected: UnicodeString;
+  options: TSelectDirOpts;
 begin
   if (SelectDirectory(DirSelected, options, 0)) then
   begin
@@ -122,14 +121,14 @@ begin
     SevenZip1.ExtractToPath := txtExtractToPath.Text;
     SevenZip1.ExtractAll;
     ShowMessage('Extract Complete.');
-  except on E: EipzSevenZip do
+  except on E: EIPWorksZip do
     ShowMessage(E.Message);
   end;
 end;
 
 procedure TFormOpenSevenZip.btnExtractSelectedClick(Sender: TObject);
 var
-curListItem: TListItem;
+  curListItem: TListItem;
 begin
   try
     ProgressBar1.Position := 0;
@@ -146,13 +145,13 @@ begin
     end;
 
     ShowMessage('Extract Complete.');
-  except on E: EipzSevenZip do
+  except on E: EIPWorksZip do
     ShowMessage(E.Message);
   end;
 end;
 
 procedure TFormOpenSevenZip.SevenZip1Progress(Sender: TObject; Data: string;
-  const Filename: string; BytesProcessed: Int64; PercentProcessed: Integer);
+  DataB: TBytes; const Filename: string; BytesProcessed: Int64; PercentProcessed: Integer);
 begin
   ProgressBar1.Position := PercentProcessed;
 end;

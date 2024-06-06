@@ -1,5 +1,5 @@
 /*
- * IPWorks ZIP 2022 Java Edition - Sample Project
+ * IPWorks ZIP 2024 Java Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks ZIP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -17,48 +17,34 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import ipworkszip.*;
-public class createzip {
-	Zip zip;
-	String buffer;
-	public createzip(){
-		zip = new Zip();
-		
-		try{		  		
 
-			System.out.print("Please enter the name of the zip file to create [test.zip]: ");
-			buffer = input();
-			if (buffer.length() > 0) zip.setArchiveFile(buffer);
-			else zip.setArchiveFile("test.zip");
-			
-			System.out.print("Recurse? [N]: ");
-			int ch = System.in.read();
-			if (ch == 'n' || ch == 'N') zip.setRecurseSubdirectories(false);
-			
-		  System.out.print("Please enter the path of the directory to compress [.]: ");
-		  buffer = input();
-		  if (buffer.length() > 0) zip.includeFiles(buffer);
-		  else zip.includeFiles("./*");
-		  
-	    System.out.println("Compressing...");
-		  zip.compress();	   
-		  System.out.println("Directory compressed."); 
-		}catch(IPWorksZipException ex){
-			System.out.println("IPWorksZIP exception thrown: " + ex.getCode() + " [" + ex.getMessage() + "].");		
-		}
-		catch(Exception ex){
-			System.out.println(ex.getMessage());
-		}
-	}
-	public static void main(String[] args) {
-	new createzip();
-	}
-	
-	private String input() throws IOException
-  {
-     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-     return bf.readLine();
+public class createzip extends ConsoleDemo {
+  Zip zip;
+  
+  public createzip() {
+    zip = new Zip();
+    
+    try {
+      zip.setArchiveFile(prompt("Please enter the name of the zip file to create", ":", "test.zip"));
+      char ch = ask("Recurse Subdirectories");
+      if (ch == 'n' || ch == 'N')
+        zip.setRecurseSubdirectories(false);
+
+      zip.includeFiles(prompt("Please enter the path of the directory to compress", ":", "./*"));
+      
+      System.out.println("Compressing...");
+      zip.compress();
+      System.out.println("Directory compressed.");
+    } catch (IPWorksZipException ex) {
+      System.out.println("IPWorksZip exception thrown: " + ex.getCode() + " [" + ex.getMessage() + "].");
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+    }
   }
   
+  public static void main(String[] args) {
+    new createzip();
+  } 
 }
 
 class ConsoleDemo {
@@ -82,15 +68,13 @@ class ConsoleDemo {
     System.out.print(label + punctuation + " ");
     return input();
   }
-
-  static String prompt(String label, String punctuation, String defaultVal)
-  {
-	System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
-	String response = input();
-	if(response.equals(""))
-		return defaultVal;
-	else
-		return response;
+  static String prompt(String label, String punctuation, String defaultVal) {
+      System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
+      String response = input();
+      if (response.equals(""))
+        return defaultVal;
+      else
+        return response;
   }
 
   static char ask(String label) {

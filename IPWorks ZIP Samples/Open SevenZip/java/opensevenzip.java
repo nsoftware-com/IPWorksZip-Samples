@@ -1,5 +1,5 @@
 /*
- * IPWorks ZIP 2022 Java Edition - Sample Project
+ * IPWorks ZIP 2024 Java Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks ZIP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -19,10 +19,10 @@ import java.io.InputStreamReader;
 import ipworkszip.*;
 
 public class opensevenzip extends ConsoleDemo {
-	Sevenzip sevenzip;
+	SevenZip sevenzip;
 	String buffer;
 	public opensevenzip(){
-		sevenzip = new Sevenzip();
+		sevenzip = new SevenZip();
 		try{
 			sevenzip.setArchiveFile(prompt("Please enter the name of the 7z file to extract",":","samplezip.7z"));
 			sevenzip.setExtractToPath(prompt("Please enter the path for extraction",":","./"));
@@ -67,15 +67,13 @@ class ConsoleDemo {
     System.out.print(label + punctuation + " ");
     return input();
   }
-
-  static String prompt(String label, String punctuation, String defaultVal)
-  {
-	System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
-	String response = input();
-	if(response.equals(""))
-		return defaultVal;
-	else
-		return response;
+  static String prompt(String label, String punctuation, String defaultVal) {
+      System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
+      String response = input();
+      if (response.equals(""))
+        return defaultVal;
+      else
+        return response;
   }
 
   static char ask(String label) {

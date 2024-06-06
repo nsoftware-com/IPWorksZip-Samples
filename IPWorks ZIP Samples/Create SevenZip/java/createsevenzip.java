@@ -1,5 +1,5 @@
 /*
- * IPWorks ZIP 2022 Java Edition - Sample Project
+ * IPWorks ZIP 2024 Java Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks ZIP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -19,32 +19,32 @@ import java.io.InputStreamReader;
 import ipworkszip.*;
 
 public class createsevenzip extends ConsoleDemo {
-	Sevenzip sevenzip;
-	String buffer;
+  SevenZip sevenzip;
 
-	public createsevenzip() {
-		sevenzip = new Sevenzip();
+  public createsevenzip() {
+    sevenzip = new SevenZip();
 
-		try {
-			sevenzip.setArchiveFile(prompt("Please enter the name of the 7z file to create", ":", "test.7z"));
-			sevenzip.includeFiles(prompt("Please enter the path of the directory to compress", ":", "./*"));
-			char ch = ask("Recurse Subdirectories");
-			if (ch == 'n' || ch == 'N')
-				sevenzip.setRecurseSubdirectories(false);
+    try {
+      sevenzip.setArchiveFile(prompt("Please enter the name of the 7z file to create", ":", "test.7z"));
+      char ch = ask("Recurse Subdirectories");
+      if (ch == 'n' || ch == 'N')
+        sevenzip.setRecurseSubdirectories(false);
 
-			System.out.println("Compressing...");
-			sevenzip.compress();
-			System.out.println("Directory compressed.");
-		} catch (IPWorksZipException ex) {
-			System.out.println("IPWorksZup exception thrown: " + ex.getCode() + " [" + ex.getMessage() + "].");
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
+      sevenzip.includeFiles(prompt("Please enter the path of the directory to compress", ":", "./*"));
+      
+      System.out.println("Compressing...");
+      sevenzip.compress();
+      System.out.println("Directory compressed.");
+    } catch (IPWorksZipException ex) {
+      System.out.println("IPWorksZip exception thrown: " + ex.getCode() + " [" + ex.getMessage() + "].");
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+    }
+  }
 
-	public static void main(String[] args) {
-		new createsevenzip();
-	}
+  public static void main(String[] args) {
+    new createsevenzip();
+  }
 }
 
 
@@ -69,15 +69,13 @@ class ConsoleDemo {
     System.out.print(label + punctuation + " ");
     return input();
   }
-
-  static String prompt(String label, String punctuation, String defaultVal)
-  {
-	System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
-	String response = input();
-	if(response.equals(""))
-		return defaultVal;
-	else
-		return response;
+  static String prompt(String label, String punctuation, String defaultVal) {
+      System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
+      String response = input();
+      if (response.equals(""))
+        return defaultVal;
+      else
+        return response;
   }
 
   static char ask(String label) {

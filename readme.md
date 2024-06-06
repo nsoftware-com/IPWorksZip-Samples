@@ -2,18 +2,18 @@
 The provided sample projects offer a concise yet effective demonstration of the components from IPWorks ZIP, showcasing their usage in a straightforward manner. While they are not intended to be complete applications, they serve as valuable illustrations of key features. To enhance clarity, error handling and checks are simplified, allowing users to focus on the core functionality.
 
 ## Requirements
-IPWorks ZIP 2022 libraries for the corresponding edition are required to run these samples.  Free download from: [https://www.nsoftware.com/ipworkszip](https://www.nsoftware.com/ipworkszip)
+IPWorks ZIP 2024 libraries for the corresponding edition are required to run these samples.  Free download from: [https://www.nsoftware.com/ipworkszip](https://www.nsoftware.com/ipworkszip)
 
 ## Reference Documentation
-* [Java Edition](https://cdn.nsoftware.com/help/IZH/java/)
-* [.NET Edition](https://cdn.nsoftware.com/help/IZH/cs/)
-* [JavaScript Edition](https://cdn.nsoftware.com/help/IZH/js/)
-* [Python Edition](https://cdn.nsoftware.com/help/IZH/py/)
-* [PHP Edition](https://cdn.nsoftware.com/help/IZH/php/)
-* [C++ Edition](https://cdn.nsoftware.com/help/IZH/cpp/)
-* [Delphi Edition](https://cdn.nsoftware.com/help/IZH/dlp/)
-* [macOS Edition](https://cdn.nsoftware.com/help/IZH/mac/)
-* [iOS Edition](https://cdn.nsoftware.com/help/IZH/mac/)
+* [Java Edition](https://cdn.nsoftware.com/help/IZJ/java/)
+* [.NET Edition](https://cdn.nsoftware.com/help/IZJ/cs/)
+* [JavaScript Edition](https://cdn.nsoftware.com/help/IZJ/js/)
+* [Python Edition](https://cdn.nsoftware.com/help/IZJ/py/)
+* [PHP Edition](https://cdn.nsoftware.com/help/IZJ/php/)
+* [C++ Edition](https://cdn.nsoftware.com/help/IZJ/cpp/)
+* [Delphi Edition](https://cdn.nsoftware.com/help/IZJ/dlp/)
+* [macOS Edition](https://cdn.nsoftware.com/help/IZJ/mac/)
+* [iOS Edition](https://cdn.nsoftware.com/help/IZJ/mac/)
 
 ## Sample Projects
 | Sample Project | Description |

@@ -121,7 +121,7 @@ object FormCreatezip: TFormCreatezip
     Width = 105
     Height = 21
     TabOrder = 5
-    Text = 'Password'
+    Text = 'Default'
     Items.Strings = (
       'Default'
       'AES 128'
